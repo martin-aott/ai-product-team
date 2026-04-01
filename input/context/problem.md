@@ -1,0 +1,5 @@
+- Companies rely on expensive external providers for lead generation
+- Lack of control over targeting and output quality
+- Slow iteration cycles when changing criteria
+- Limited transparency into how leads are generated
+- High recurring costs for a repeatable process

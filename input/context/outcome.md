@@ -1,0 +1,5 @@
+- Reduced cost from USD 2495/month to near-zero marginal cost
+- Increased control over targeting and logic
+- Enabled instant iteration and customization
+- Maintained or improved output quality
+- Shifted from service dependency to owned capability

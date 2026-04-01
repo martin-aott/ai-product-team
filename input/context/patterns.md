@@ -1,0 +1,4 @@
+- Data sourcing → processing → scoring → storage
+- Configurable logic layer
+- Repeatable across use cases
+- Replaceable human-driven workflows

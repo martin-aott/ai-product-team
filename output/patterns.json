@@ -1,0 +1,57 @@
+{
+  "patterns": [
+    {
+      "name": "Source → Extract → Normalize → Score → Store pipeline",
+      "description": "A linear data pipeline where records are pulled from an external source, parsed into a structured format, cleaned, ranked by configurable criteria, and persisted. This pattern recurs across any workflow that replaces manual data research or enrichment.",
+      "reusability": "high",
+      "configurable_elements": [
+        "Data source endpoint and auth",
+        "Field extraction mapping",
+        "Normalization and deduplication rules",
+        "Scoring criteria and weights",
+        "Storage backend and schema"
+      ]
+    },
+    {
+      "name": "Configurable Logic Layer",
+      "description": "A rules engine or criteria layer that sits between raw data and output, allowing operators to adjust what gets included, excluded, or ranked without modifying the pipeline infrastructure.",
+      "reusability": "high",
+      "configurable_elements": [
+        "Filter conditions",
+        "Scoring weights",
+        "Inclusion/exclusion thresholds",
+        "Output ranking order"
+      ]
+    },
+    {
+      "name": "Scheduled Repeatable Workflow",
+      "description": "A workflow designed to run on a recurring cadence without human intervention, replacing a process that was previously executed manually or delegated to an external party.",
+      "reusability": "high",
+      "configurable_elements": [
+        "Trigger schedule (cron interval)",
+        "Input parameters per run",
+        "Notification or alerting hooks"
+      ]
+    },
+    {
+      "name": "Human-Workflow Replacement",
+      "description": "Automating a workflow that was previously performed by a human or outsourced service, shifting ownership and execution speed to the operator while eliminating recurring service costs.",
+      "reusability": "high",
+      "configurable_elements": [
+        "Workflow definition (steps and logic)",
+        "Escalation or exception handling rules",
+        "Output format for downstream consumers"
+      ]
+    },
+    {
+      "name": "Downstream Delivery Adapter",
+      "description": "A final step in the pipeline that formats and routes output to any consuming system — CRM, spreadsheet, webhook, or dashboard — without changing upstream pipeline logic.",
+      "reusability": "high",
+      "configurable_elements": [
+        "Output format (CSV, JSON, API push)",
+        "Destination system",
+        "Field mapping for target schema"
+      ]
+    }
+  ]
+}

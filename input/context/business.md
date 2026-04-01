@@ -1,0 +1,3 @@
+- Built originally for internal use
+- Industry is irrelevant for productization
+- Represents a shift from outsourced service to internal automation

@@ -1,0 +1,125 @@
+{
+  "components": [
+    {
+      "name": "Data Sourcing Module",
+      "description": "Queries external data sources to retrieve raw lead or entity records"
+    },
+    {
+      "name": "Extraction Layer",
+      "description": "Parses and pulls structured fields from raw API or web responses"
+    },
+    {
+      "name": "Normalization Pipeline",
+      "description": "Cleans, deduplicates, and standardizes extracted records into a consistent schema"
+    },
+    {
+      "name": "Scoring Engine",
+      "description": "Applies configurable criteria to rank or filter records by relevance"
+    },
+    {
+      "name": "Storage Layer",
+      "description": "Persists scored records to a structured data store for retrieval and reuse"
+    },
+    {
+      "name": "Downstream Delivery Layer",
+      "description": "Exposes or exports processed records to consuming systems (CRM, spreadsheet, webhook)"
+    }
+  ],
+  "triggers": [
+    {
+      "type": "cron",
+      "description": "Scheduled execution via automation platform on defined interval"
+    },
+    {
+      "type": "manual",
+      "description": "On-demand run triggered by operator"
+    }
+  ],
+  "actions": [
+    {
+      "step": 1,
+      "name": "search_sources",
+      "description": "Query external data APIs with defined search parameters"
+    },
+    {
+      "step": 2,
+      "name": "extract_data",
+      "description": "Pull structured fields from raw API responses"
+    },
+    {
+      "step": 3,
+      "name": "clean_normalize",
+      "description": "Deduplicate, format, and standardize records"
+    },
+    {
+      "step": 4,
+      "name": "apply_scoring",
+      "description": "Score each record against configurable criteria"
+    },
+    {
+      "step": 5,
+      "name": "store_results",
+      "description": "Write scored records to data storage"
+    },
+    {
+      "step": 6,
+      "name": "deliver_downstream",
+      "description": "Push or expose results to downstream consumers"
+    }
+  ],
+  "dependencies": [
+    {
+      "name": "External data APIs",
+      "type": "integration",
+      "role": "Primary data source for record retrieval"
+    },
+    {
+      "name": "Automation platform",
+      "type": "infrastructure",
+      "role": "Orchestrates workflow execution and scheduling"
+    },
+    {
+      "name": "Data storage system",
+      "type": "infrastructure",
+      "role": "Persists normalized and scored records"
+    }
+  ],
+  "reusable_modules": [
+    {
+      "name": "Configurable Search Connector",
+      "description": "Generic module for querying any structured external API with parameterized inputs",
+      "fixed_parts": ["HTTP request handler", "pagination logic"],
+      "configurable_parts": ["endpoint", "query params", "auth method"]
+    },
+    {
+      "name": "Field Extraction Template",
+      "description": "Maps raw API response fields to a target schema via a user-defined mapping config",
+      "fixed_parts": ["schema mapper", "null handler"],
+      "configurable_parts": ["field mapping", "target schema"]
+    },
+    {
+      "name": "Normalization Pipeline",
+      "description": "Applies deduplication, formatting, and validation rules to any record set",
+      "fixed_parts": ["dedup logic", "type coercion"],
+      "configurable_parts": ["validation rules", "format templates"]
+    },
+    {
+      "name": "Scoring Engine",
+      "description": "Assigns scores to records based on weighted criteria defined per use case",
+      "fixed_parts": ["scoring loop", "output sorter"],
+      "configurable_parts": ["criteria weights", "threshold filters"]
+    },
+    {
+      "name": "Storage Adapter",
+      "description": "Writes records to any configured storage backend",
+      "fixed_parts": ["write handler", "error retry"],
+      "configurable_parts": ["target system", "schema"]
+    },
+    {
+      "name": "Output Exporter",
+      "description": "Formats and delivers results to downstream consumers via webhook, file, or API push",
+      "fixed_parts": ["formatter", "delivery handler"],
+      "configurable_parts": ["output format", "destination"]
+    }
+  ]
+}

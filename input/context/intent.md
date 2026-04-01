@@ -1,0 +1,4 @@
+- Treat this as a signal, not the product
+- Identify broader categories where this advantage matters
+- Focus on replacing services with software
+- Prioritize scalable, repeatable solutions

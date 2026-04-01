@@ -1,0 +1,66 @@
+{
+  "core_capabilities": [
+    "Automated retrieval of structured records from any external data source via configurable API connectors",
+    "Configurable scoring and filtering logic that can be owned and modified by the operator without vendor dependency",
+    "Repeatable, scheduled execution of multi-step data workflows with near-zero marginal cost per run",
+    "Normalization and deduplication of heterogeneous data into a consistent, queryable schema",
+    "Flexible output delivery to any downstream system or format"
+  ],
+  "economic_advantages": [
+    {
+      "advantage": "Elimination of recurring service fees",
+      "detail": "Replaces a USD ~2,500/month outsourced service with automation that runs at near-zero marginal cost per execution"
+    },
+    {
+      "advantage": "Instant iteration with no vendor lag",
+      "detail": "Operators can change targeting criteria, scoring logic, or output format in minutes rather than waiting on vendor turnaround cycles"
+    },
+    {
+      "advantage": "Owned capability vs. service dependency",
+      "detail": "Logic and data live in the operator's infrastructure, eliminating lock-in and enabling compounding improvement over time"
+    },
+    {
+      "advantage": "Linear scale without linear cost",
+      "detail": "Running the workflow at 10x volume does not require 10x spend — the marginal cost per additional record is near zero once infrastructure is in place"
+    }
+  ],
+  "replaced_alternatives": [
+    "Outsourced data research or lead generation agencies",
+    "Manual analyst research and spreadsheet compilation",
+    "Subscription data platforms (Apollo, ZoomInfo, etc.) with per-seat or per-record pricing",
+    "Internal VA or offshore team executing repeatable data tasks",
+    "Point-solution SaaS tools that bundle automation with proprietary data access"
+  ],
+  "generalized_use_cases": [
+    {
+      "use_case": "Automated prospect research and list building",
+      "target_user": "Sales and growth teams at SMBs and mid-market companies",
+      "why_it_matters": "Replaces expensive monthly subscriptions or agency fees for a repeatable workflow that can run on demand at near-zero marginal cost"
+    },
+    {
+      "use_case": "Competitive intelligence monitoring",
+      "target_user": "Product and strategy teams tracking market changes",
+      "why_it_matters": "Automates recurring data pulls from public sources, scored and normalized, replacing analyst hours or vendor reports"
+    },
+    {
+      "use_case": "Vendor or supplier vetting pipeline",
+      "target_user": "Procurement and operations teams",
+      "why_it_matters": "Standardizes and automates a historically manual process of sourcing, scoring, and shortlisting vendors against configurable criteria"
+    },
+    {
+      "use_case": "Job market or talent sourcing workflow",
+      "target_user": "Recruiting teams and talent acquisition ops",
+      "why_it_matters": "Replaces recruiter hours or agency fees for top-of-funnel candidate discovery by automating search, extraction, scoring, and delivery to an ATS"
+    },
+    {
+      "use_case": "Real estate or asset opportunity tracking",
+      "target_user": "Real estate investors, acquisition teams, asset managers",
+      "why_it_matters": "Runs recurring searches across listing sources, applies scoring criteria, and surfaces ranked opportunities — replacing manual monitoring or expensive broker services"
+    },
+    {
+      "use_case": "Regulatory or compliance data collection",
+      "target_user": "Legal, compliance, and risk teams",
+      "why_it_matters": "Automates extraction and normalization of records from public or semi-public sources, scored against compliance thresholds, replacing manual review cycles"
+    }
+  ]
+}

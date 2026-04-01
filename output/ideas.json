@@ -1,0 +1,59 @@
+{
+  "ideas": [
+    {
+      "product_name": "PipelineOS",
+      "category": "No-code data pipeline builder",
+      "target_user": "Operations and revenue teams at SMBs who run recurring data workflows but can't engineer custom solutions",
+      "core_problem": "Teams pay recurring SaaS fees or agency costs for data workflows that are fully automatable, but lack the tooling to build and own them without engineering help.",
+      "solution_summary": "A no-code builder that lets operators define source → extract → score → deliver pipelines using a visual interface. Users configure the data source, scoring criteria, and output destination. The workflow runs on a schedule and delivers results to wherever the team works.",
+      "economic_edge": "Eliminates recurring service or subscription fees for repeatable workflows. A team paying $2,000–5,000/month to a vendor or agency for the same output can replace it with a one-time setup and a flat subscription.",
+      "pricing_model": "Flat monthly SaaS subscription tiered by number of active pipelines and monthly run volume. No per-record fees.",
+      "mvp_scope": "Single pipeline type: define a structured search query, connect one external data source, set scoring weights, schedule runs, deliver results to Google Sheets or a webhook. No UI for multiple pipeline types initially.",
+      "expansion_path": "Add native connectors to more data sources, support multi-step pipelines with branching logic, add a results dashboard, then expand into team collaboration features and API access."
+    },
+    {
+      "product_name": "ScoreStack",
+      "category": "Configurable scoring and filtering engine",
+      "target_user": "Analysts and ops teams at mid-market companies who need to rank, filter, or prioritize structured data sets but don't want to maintain custom code.",
+      "core_problem": "Every team that works with structured records — leads, vendors, candidates, properties — needs to apply scoring logic to rank them. This logic either lives in spreadsheets (fragile) or custom code (expensive to maintain).",
+      "solution_summary": "A standalone scoring engine where users define criteria, assign weights, and connect any tabular data source. ScoreStack applies the logic and returns a ranked output. Rules are versioned and auditable. No code required.",
+      "economic_edge": "Replaces bespoke spreadsheet formulas and engineering time for scoring logic. Faster iteration than rebuilding scoring rules in code. Cheap to run vs. maintaining a data analyst to own this manually.",
+      "pricing_model": "Per-seat SaaS with a free tier for up to 1 scoring model and 500 records/month. Paid tiers unlock multiple models, higher volume, and team sharing.",
+      "mvp_scope": "Upload a CSV or connect a Google Sheet. Define scoring criteria with weights via a form UI. Get a ranked output back. Save and re-run the model on new data.",
+      "expansion_path": "Add live data source connectors (APIs, databases), support conditional scoring logic, add collaboration and approval workflows, then sell into enterprise as a lightweight decisioning layer."
+    },
+    {
+      "product_name": "AutoList",
+      "category": "Automated list building and enrichment platform",
+      "target_user": "Sales, recruiting, and research teams who need fresh, targeted lists of entities (companies, people, properties) on a recurring basis.",
+      "core_problem": "Building and maintaining accurate, targeted lists is time-intensive and expensive. Subscribing to data platforms locks teams into proprietary data and high per-seat costs. Outsourcing it adds latency and removes control over targeting logic.",
+      "solution_summary": "AutoList runs recurring search queries against user-configured data sources, applies targeting and scoring criteria owned by the user, and delivers a fresh, deduplicated, enriched list on a schedule. The user defines who they want to reach — AutoList handles the sourcing and delivery.",
+      "economic_edge": "Replaces $500–$5,000/month data subscriptions or agency fees. Near-zero marginal cost per additional run once configured. Full control over targeting logic with no vendor dependency.",
+      "pricing_model": "Subscription tiered by monthly record volume. Base tier: up to 1,000 records/month. Scales up. No per-record fees within tier.",
+      "mvp_scope": "Connect one data source. Define a search query and up to 5 scoring criteria. Schedule weekly runs. Deliver results to a Google Sheet or CSV download. Deduplicate against previous runs.",
+      "expansion_path": "Add more native data source integrations, multi-step enrichment (cross-reference multiple sources per record), direct CRM push, team workspaces, and white-label options for agencies."
+    },
+    {
+      "product_name": "WorkflowReplace",
+      "category": "Service-to-software automation conversion tool",
+      "target_user": "Founders, ops leads, and consultants who want to convert a recurring outsourced or manual process into a self-running workflow they own.",
+      "core_problem": "Many companies pay recurring fees for outsourced services or internal labor to execute workflows that are inherently automatable. The barrier isn't desire — it's the engineering overhead of building, deploying, and maintaining the automation.",
+      "solution_summary": "WorkflowReplace provides templates and a guided builder for the most common outsource-to-automate conversions: data research, report generation, monitoring, enrichment. Users pick a workflow type, configure it to their use case, connect their data sources, and deploy. The platform handles scheduling, error handling, and delivery.",
+      "economic_edge": "Direct cost displacement: every workflow automated represents a canceled subscription or reduced headcount. ROI is immediate and measurable. Users know exactly what they're replacing and at what cost.",
+      "pricing_model": "Flat monthly subscription. Optionally charge a one-time setup fee for guided onboarding. Position against the cost of what it replaces.",
+      "mvp_scope": "Offer 3 pre-built workflow templates (lead research, competitor monitoring, vendor shortlisting). User configures inputs and destinations through a form. Workflow runs on schedule. Results delivered to email or spreadsheet.",
+      "expansion_path": "Grow the template library, add custom workflow builder for non-template use cases, add a marketplace for community-contributed templates, expand into API access for developers."
+    },
+    {
+      "product_name": "CriteriaEngine",
+      "category": "Horizontal rules and criteria management platform",
+      "target_user": "Ops teams, analysts, and product managers who manage logic-heavy decision workflows across any domain",
+      "core_problem": "Business logic — who qualifies for what, what gets prioritized, what gets routed where — lives in spreadsheets, Notion docs, and tribal knowledge. When criteria change, updates are manual, inconsistent, and unaudited.",
+      "solution_summary": "A platform for defining, versioning, and executing business criteria across any structured data. Users define rules in plain language or a simple form UI. CriteriaEngine evaluates any incoming record against the active ruleset and returns a decision, score, or routing action. All changes are versioned with a changelog.",
+      "economic_edge": "Speed: criteria changes take minutes instead of days. Control: logic is owned and auditable by the business, not buried in code or vendor black boxes. Reduced engineering dependency for logic-layer changes.",
+      "pricing_model": "SaaS subscription tiered by number of active rule sets and monthly evaluations.",
+      "mvp_scope": "Define a ruleset with up to 10 criteria. Upload a CSV and run evaluations. Download results with pass/fail/score per record. Version history for ruleset changes.",
+      "expansion_path": "Add real-time API evaluation endpoint, connect to CRMs and data warehouses, add approval workflows for rule changes, then expand into compliance and audit use cases."
+    }
+  ]
+}
