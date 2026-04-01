@@ -304,7 +304,7 @@
           "parameters": [
             {
               "name": "X-Api-Key",
-              "value": "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"
+              "value": "test"
             },
             {
               "name": "anthropic-version",
