@@ -1,0 +1,39 @@
+{
+  "gtm": [
+    {
+      "product_name": "ScoreStack",
+      "icp": "Operations manager or revenue ops analyst at a 10–200 person B2B company. They manage spreadsheets that score or rank records (leads, vendors, candidates) and own those criteria. They rebuild the logic manually whenever criteria change. No dedicated engineering support for tooling.",
+      "positioning": "The simplest way to turn your scoring spreadsheet into a repeatable, versioned model you can run on any data. No code. No formulas breaking. Just define your criteria and run.",
+      "acquisition_channel": "LinkedIn outbound targeting ops managers and RevOps titles at SMBs. Content marketing via 'replace your scoring spreadsheet' angle on LinkedIn and Twitter/X. Post in communities: RevOps Co-op, Sales Hacker, Ops Nation. ProductHunt launch for initial traction spike.",
+      "sales_angle": "Lead with the pain: 'How long does it take you to update your scoring criteria when priorities change?' Position ScoreStack as the upgrade from a spreadsheet that breaks — not a complex data tool. Free tier with CSV upload removes all friction for first use."
+    },
+    {
+      "product_name": "AutoList",
+      "icp": "Sales development leader or growth lead at a 20–150 person B2B SaaS or services company. Currently paying $500–$2,500/month for a data subscription (Apollo, ZoomInfo, Seamless) or outsourcing list building to a VA or agency. Frustrated by static data, slow refresh cycles, or black-box targeting.",
+      "positioning": "Build your own list engine. Define exactly who you want to reach, set it to run weekly, and get a fresh, deduplicated list delivered automatically — without paying per record or waiting on a vendor.",
+      "acquisition_channel": "Cold email outbound to SDR managers and growth leads at companies known to use Apollo or ZoomInfo (firmographic signals). LinkedIn DMs to RevOps and sales ops at mid-market B2B companies. Affiliate/referral from sales communities (Pavilion, Sales Hacker). Comparison SEO: 'AutoList vs Apollo', 'cheaper alternative to ZoomInfo'.",
+      "sales_angle": "Lead with cost displacement: 'You're paying $X/month for a list tool that doesn't let you own the logic. AutoList gives you the same output at a fraction of the cost — and the criteria are yours.' Offer to recreate their current list setup in a free trial."
+    },
+    {
+      "product_name": "WorkflowReplace",
+      "icp": "Founder or ops lead at a bootstrapped or early-stage company (5–50 people) currently paying a recurring fee for an outsourced or VA-run workflow. They know it should be automated but haven't had time to build it. Likely using Zapier or Make for some workflows already.",
+      "positioning": "Stop paying for work a machine can do. WorkflowReplace gives you ready-to-use automation templates for the workflows you're currently outsourcing — set up in an afternoon, yours forever.",
+      "acquisition_channel": "Outbound to founders and ops leads via LinkedIn and cold email. Target companies with job posts for VAs or 'operations coordinator' roles — signal that they're running manual workflows at scale. Twitter/X content targeting bootstrapped founders. Reddit (r/entrepreneur, r/SaaS) with specific 'I automated my $X/month agency cost' story. AppSumo launch for lifetime deal traction.",
+      "sales_angle": "The ROI pitch is literal: 'What are you currently paying per month for [X workflow]? WorkflowReplace costs less than one month of that.' Frame every template as a direct replacement for a named service or role. First template free with no credit card to get users in."
+    },
+    {
+      "product_name": "PipelineOS",
+      "icp": "Head of RevOps, data ops, or growth engineering at a 50–500 person B2B company. Has used Zapier/Make but hit its limits. Wants to build custom data pipelines without maintaining Python scripts. Reports to a VP of Sales or CRO. Budget owner for growth tooling stack.",
+      "positioning": "The no-code data pipeline platform for revenue teams. Connect your data sources, define your logic, and run it on a schedule — without writing code or managing infrastructure.",
+      "acquisition_channel": "LinkedIn content targeting RevOps and data ops personas. Outbound to companies with open RevOps or marketing ops roles (proxy for pipeline pain). Community presence in RevOps Co-op and Operators Guild. Integration partnerships with CRMs (HubSpot, Salesforce) for distribution and co-marketing.",
+      "sales_angle": "Sell against Zapier's limitations and the cost of maintaining custom scripts. 'If you've outgrown Zapier but can't justify a data engineering hire, PipelineOS is the middle ground.' Target companies who post about RevOps stack or data integration challenges on LinkedIn."
+    },
+    {
+      "product_name": "CriteriaEngine",
+      "icp": "Revenue ops or sales ops manager at a 30–300 person B2B company managing lead qualification, routing, or scoring logic. Currently using a combination of HubSpot workflows and spreadsheets to encode criteria. Criteria change quarterly and updates are painful.",
+      "positioning": "Version-controlled business rules for revenue teams. Define your qualification criteria once, apply them to any data, and change them in minutes — not days.",
+      "acquisition_channel": "LinkedIn outbound targeting RevOps, sales ops, and marketing ops titles. Integrate with HubSpot and Salesforce early to get marketplace distribution. Content: 'How to stop managing your lead scoring logic in a spreadsheet.' Target users in HubSpot and Salesforce communities.",
+      "sales_angle": "Lead with the changelog problem: 'When was the last time your scoring criteria changed? How long did it take to update? CriteriaEngine makes that a 5-minute task.' Works best when packaged as a vertical tool (e.g., 'lead scoring for outbound teams') rather than a generic rules engine."
+    }
+  ]
+}

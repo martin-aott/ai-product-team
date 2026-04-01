@@ -1,0 +1,44 @@
+{
+  "scored_ideas": [
+    {
+      "product_name": "ScoreStack",
+      "score": 9,
+      "complexity": "low",
+      "risk": "low",
+      "time_to_mvp": "3–4 weeks",
+      "notes": "Narrowest scope of all ideas — no external API dependency at MVP (user uploads CSV). Core logic is just a weighted criteria calculator applied to tabular data. Entirely feasible as a solo build. High reusability signal: scoring logic is needed across sales, recruiting, procurement, and compliance. Fast to validate with a simple form + spreadsheet output. Low infrastructure overhead."
+    },
+    {
+      "product_name": "AutoList",
+      "score": 7,
+      "complexity": "medium",
+      "risk": "medium",
+      "time_to_mvp": "5–7 weeks",
+      "notes": "Strong economic edge and clear displacement story. MVP is achievable solo if scoped to one data source connector. Main risk: depends on availability and reliability of external data source APIs, which can change pricing or access policies. Deduplication logic adds some complexity. Scheduling infrastructure (cron + job queue) adds a week. Worth building if you already have a data source integration in hand."
+    },
+    {
+      "product_name": "WorkflowReplace",
+      "score": 7,
+      "complexity": "medium",
+      "risk": "medium",
+      "time_to_mvp": "5–8 weeks",
+      "notes": "Template-driven approach reduces initial complexity vs. a custom builder. Strong positioning angle (replace what you're paying for). Risk: defining the right 3 templates requires upfront market validation — wrong templates = low adoption. Also inherits API dependency risk from whatever data sources the templates use. Solo feasible if templates are tightly scoped. Positioning is differentiated and easy to sell against a known cost."
+    },
+    {
+      "product_name": "PipelineOS",
+      "score": 6,
+      "complexity": "high",
+      "risk": "medium",
+      "time_to_mvp": "8–12 weeks",
+      "notes": "Most powerful product in the set but also the hardest to build solo. A visual pipeline builder requires significant frontend work. Requires connector abstraction layer, scheduling infrastructure, error handling UI, and output delivery logic all at once. High risk of scope creep. Not recommended as a first build unless the team has prior no-code tooling experience. Better as an expansion path from ScoreStack or AutoList once core data pipeline logic is validated."
+    },
+    {
+      "product_name": "CriteriaEngine",
+      "score": 6,
+      "complexity": "medium",
+      "risk": "low",
+      "time_to_mvp": "4–6 weeks",
+      "notes": "Technically simple — it's a rules evaluation engine over structured data. Version history adds some complexity but is achievable. The risk is product-market fit: this is a horizontal tool that requires users to think abstractly about their logic layer, which can be a hard sales motion without a specific vertical or workflow to anchor to. Would benefit from being packaged as a vertical (e.g., 'lead scoring engine' or 'vendor qualification tool') rather than sold as a generic platform. Low API dependency at MVP."
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "problems": [
+    {
+      "description": "Companies rely on expensive external providers or agencies for repeatable data sourcing and enrichment workflows, paying recurring service fees for work that could be automated.",
+      "affected_user": "Growth, sales ops, or marketing teams at SMBs and mid-market companies",
+      "severity": "high",
+      "category": "Cost inefficiency",
+      "current_alternatives": [
+        "Outsourced lead generation agencies",
+        "Manual research by in-house staff",
+        "Subscription data platforms with high per-seat or per-record pricing"
+      ]
+    },
+    {
+      "description": "Organizations lack control over the targeting logic and output quality of their data pipelines because the logic lives inside a third-party service rather than in-house.",
+      "affected_user": "Revenue operations and sales leadership",
+      "severity": "high",
+      "category": "Control and ownership",
+      "current_alternatives": [
+        "Negotiating custom filters with data vendors",
+        "Post-processing vendor exports manually",
+        "Building point integrations with no centralized logic layer"
+      ]
+    },
+    {
+      "description": "Changing search criteria, scoring rules, or output formats in outsourced or black-box workflows requires vendor coordination and long feedback loops.",
+      "affected_user": "Operations teams and analysts who own the workflow",
+      "severity": "medium",
+      "category": "Iteration speed",
+      "current_alternatives": [
+        "Submitting tickets to data vendors",
+        "Re-exporting and manually reformatting datasets",
+        "Rebuilding ad-hoc spreadsheet processes each cycle"
+      ]
+    },
+    {
+      "description": "Teams have no visibility into why specific records were included or excluded from a data set, making it impossible to audit, improve, or trust the output.",
+      "affected_user": "Analysts, compliance teams, and operators who consume the data",
+      "severity": "medium",
+      "category": "Transparency and auditability",
+      "current_alternatives": [
+        "Requesting methodology docs from vendors",
+        "Spot-checking outputs manually",
+        "Building shadow validation spreadsheets"
+      ]
+    },
+    {
+      "description": "Recurring, rules-based data workflows are executed manually or via expensive services despite being fully automatable, resulting in unnecessary labor or subscription cost for a predictable process.",
+      "affected_user": "Any organization running repeatable data collection or enrichment at regular intervals",
+      "severity": "high",
+      "category": "Process automation",
+      "current_alternatives": [
+        "Recurring manual execution by an analyst",
+        "Outsourced VA or offshore team",
+        "Expensive SaaS platforms that bundle automation with data access"
+      ]
+    }
+  ]
+}
