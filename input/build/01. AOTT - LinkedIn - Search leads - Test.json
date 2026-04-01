@@ -1,0 +1,578 @@
+{
+  "name": "01. AOTT - LinkedIn - Search leads - Test",
+  "nodes": [
+    {
+      "parameters": {},
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        -48,
+        -2208
+      ],
+      "id": "19dc10c4-8548-4655-a5c2-8fe0f7552c6a",
+      "name": "When clicking ‘Execute workflow’"
+    },
+    {
+      "parameters": {
+        "operation": "searchPeople",
+        "searchTerm": "={{ $json.term }}",
+        "advancedFilter": {
+          "customSearchUrl": "",
+          "locations": "={{ $json['filter.locations'] }}"
+        }
+      },
+      "id": "53bda9b1-fca2-4240-af1b-d95a77326729",
+      "name": "LinkedIn - Filtered search",
+      "type": "n8n-nodes-linked-api.linkedApi",
+      "typeVersion": 1,
+      "position": [
+        1072,
+        -2272
+      ],
+      "notesInFlow": false,
+      "credentials": {
+        "linkedApi": {
+          "id": "APCNAE4t0QvRGJhk",
+          "name": "Linked account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "options": {}
+      },
+      "type": "n8n-nodes-base.splitInBatches",
+      "typeVersion": 3,
+      "position": [
+        848,
+        -2208
+      ],
+      "id": "1f7f2ebc-da93-43c3-924b-1f7f925ce4f7",
+      "name": "Loop Over Items1"
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1pOvAeuOPakUAsivuxwI_zuuglDckxvUoqc9a-H5uCRI/edit?usp=drive_link",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 909157323,
+          "mode": "list",
+          "cachedResultName": "LinkedAPI Queries",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1pOvAeuOPakUAsivuxwI_zuuglDckxvUoqc9a-H5uCRI/edit#gid=909157323"
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        624,
+        -2208
+      ],
+      "id": "32787577-d165-4f67-a606-040a3d2258a3",
+      "name": "Get search criterias",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JtTn44Qb4hyWILAc",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "spreadsheet",
+        "title": "={{ \"LinkedIn Leads - \" + $now.toFormat(\"yyyy-MM-dd HH-mm-ss\") }}",
+        "sheetsUi": {
+          "sheetValues": [
+            {
+              "title": "Leads"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "066fa46e-0f92-4ac0-b110-d117080196b6",
+      "name": "Create search results spreadsheet",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        176,
+        -2208
+      ],
+      "executeOnce": true,
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JtTn44Qb4hyWILAc",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "move",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $('Create search results spreadsheet').first().json.spreadsheetId }}",
+          "mode": "id"
+        },
+        "driveId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/folders/1x6n-x-WLHkKgd6INBXye0GJlxV0Mehf0",
+          "mode": "url"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/folders/1cd_zouJFGu_EmBS1Qn3ugAVifAA_GZ5s",
+          "mode": "url"
+        }
+      },
+      "id": "5f036738-ce31-4313-bf97-d0fbc34c3927",
+      "name": "Move to \"Search Results\" folder",
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        400,
+        -2208
+      ],
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "VqL6zSsVParCRQzR",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "mode": "id",
+          "value": "={{ $('Move to \"Search Results\" folder').first().json.id }}"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "Leads",
+          "mode": "name"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "Contact Name",
+              "displayName": "Contact Name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Email",
+              "displayName": "Contact Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Profile URL",
+              "displayName": "Profile URL",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Contact Role",
+              "displayName": "Contact Role",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "Last Processed Timestamp",
+              "displayName": "Last Processed Timestamp",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2640,
+        -2208
+      ],
+      "id": "2b0e8fad-8742-4344-ac20-1895422baa3c",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JtTn44Qb4hyWILAc",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "fetchPerson",
+        "personUrl": "={{ $json['Profile URL'] }}"
+      },
+      "type": "n8n-nodes-linked-api.linkedApi",
+      "typeVersion": 1,
+      "position": [
+        1968,
+        -2272
+      ],
+      "id": "ef6d3653-d019-4d4b-9cc1-a35a83dcf669",
+      "name": "Fetch person",
+      "credentials": {
+        "linkedApi": {
+          "id": "APCNAE4t0QvRGJhk",
+          "name": "Linked account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        1296,
+        -2272
+      ],
+      "id": "b967c8e7-d484-473f-a4f4-3834d037324f",
+      "name": "Wait for People Search results",
+      "webhookId": "80de451b-accc-41ae-b383-5155db24630a"
+    },
+    {
+      "parameters": {
+        "fieldToSplitOut": "body.data",
+        "options": {}
+      },
+      "id": "ca7cf88a-ac00-4766-abe5-7c3a6b54591e",
+      "name": "Extract People data",
+      "type": "n8n-nodes-base.splitOut",
+      "typeVersion": 1,
+      "position": [
+        1520,
+        -2272
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "contactName",
+              "name": "Contact Name",
+              "type": "string",
+              "value": "={{ $json.name }}"
+            },
+            {
+              "id": "contactEmail",
+              "name": "Contact Email",
+              "type": "string",
+              "value": "={{ $json.email || \"\" }}"
+            },
+            {
+              "id": "profileUrl",
+              "name": "Profile URL",
+              "type": "string",
+              "value": "={{ $json.publicUrl || \"\" }}"
+            },
+            {
+              "id": "contactRole",
+              "name": "Location",
+              "type": "string",
+              "value": "={{ $json.location || \"\" }}"
+            },
+            {
+              "id": "lastProcessedTimestamp",
+              "name": "Last Processed Timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "11e1e013-e0bc-4336-b32b-24180b427f8e",
+      "name": "Process People results",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        1744,
+        -2272
+      ]
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "contactName",
+              "name": "Contact Name",
+              "type": "string",
+              "value": "={{ $('Process People results').first().json['Contact Name'] }}"
+            },
+            {
+              "id": "profileUrl",
+              "name": "Profile URL",
+              "type": "string",
+              "value": "={{ $('Wait for Person details').first().json.body.errors}}"
+            },
+            {
+              "id": "contactRole",
+              "name": "Location",
+              "type": "string",
+              "value": "={{ $('Process People results').first().json.Location}}"
+            },
+            {
+              "id": "683088b0-24c6-4521-ba15-c97dd2173909",
+              "name": "Role/Position",
+              "value": "={{ $('Wait for Person details').first().json.body.criticalError}}",
+              "type": "string"
+            },
+            {
+              "id": "lastProcessedTimestamp",
+              "name": "Last Processed Timestamp",
+              "type": "string",
+              "value": "={{ $now.toISO() }}"
+            },
+            {
+              "id": "c57911fa-bae8-4533-b46c-fa58c4cef9a9",
+              "name": "Description",
+              "value": "={{ $('Wait for Person details').first().json.body.data.about }}",
+              "type": "string"
+            },
+            {
+              "id": "c1fddf69-9a23-4cbf-8fa7-5e18cac3c96b",
+              "name": "Headline",
+              "value": "={{ $('Wait for Person details').first().json.body.data.headline }}",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "633f2644-78c3-46a4-af6b-4aa0c1e43d18",
+      "name": "Process people details",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        2400,
+        -2272
+      ]
+    },
+    {
+      "parameters": {
+        "resume": "webhook",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.wait",
+      "typeVersion": 1.1,
+      "position": [
+        2192,
+        -2272
+      ],
+      "id": "9588c02b-933c-45e5-b3dd-22a15b374c92",
+      "name": "Wait for Person details",
+      "webhookId": "645002c6-8e59-4778-9930-7734f0a39095"
+    }
+  ],
+  "pinData": {
+    "When clicking ‘Execute workflow’": [
+      {
+        "json": {},
+        "pairedItem": {
+          "item": 0
+        }
+      }
+    ]
+  },
+  "connections": {
+    "When clicking ‘Execute workflow’": {
+      "main": [
+        [
+          {
+            "node": "Create search results spreadsheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "LinkedIn - Filtered search": {
+      "main": [
+        [
+          {
+            "node": "Wait for People Search results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Loop Over Items1": {
+      "main": [
+        [],
+        [
+          {
+            "node": "LinkedIn - Filtered search",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get search criterias": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create search results spreadsheet": {
+      "main": [
+        [
+          {
+            "node": "Move to \"Search Results\" folder",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move to \"Search Results\" folder": {
+      "main": [
+        [
+          {
+            "node": "Get search criterias",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        [
+          {
+            "node": "Loop Over Items1",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Fetch person": {
+      "main": [
+        [
+          {
+            "node": "Wait for Person details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for People Search results": {
+      "main": [
+        [
+          {
+            "node": "Extract People data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Extract People data": {
+      "main": [
+        [
+          {
+            "node": "Process People results",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process People results": {
+      "main": [
+        [
+          {
+            "node": "Fetch person",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Process people details": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Wait for Person details": {
+      "main": [
+        [
+          {
+            "node": "Process people details",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "12e5a626-b787-4dd9-bbee-22369413e220",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b2db06c6600bcdf3183f72abdc7ed84248271182f2b5b83d91a56fbf9621799d"
+  },
+  "id": "Dw26fyR1ecvD5O7X",
+  "tags": []
+}

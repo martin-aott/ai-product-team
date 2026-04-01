@@ -1,0 +1,479 @@
+{
+  "name": "02. AOTT - LinkedIn - Score and generate messages",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "5fe7c7f1-90b8-4bf8-80a0-814eeb888675",
+      "name": "Start Workflow",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        272,
+        -864
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 3
+          },
+          "conditions": [
+            {
+              "leftValue": "={{ new Date($json[\"Connected On\"]).getTime() }}",
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              },
+              "rightValue": "={{ new Date(\"2024-09-01\").getTime() }}",
+              "id": "c80d85e2-3de4-4264-8c6c-3a8d7820fe35"
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "cde42b69-f5a9-4aea-8595-7d847904f2fa",
+      "name": "Filter Recent Contacts (Sept 1+)",
+      "type": "n8n-nodes-base.filter",
+      "typeVersion": 2.3,
+      "position": [
+        1392,
+        -928
+      ],
+      "alwaysOutputData": true,
+      "disabled": true
+    },
+    {
+      "parameters": {
+        "aggregate": "aggregateAllItemData",
+        "destinationFieldName": "contacts",
+        "options": {}
+      },
+      "id": "1b317e2d-dc9f-4aad-8972-f18421ad8f5e",
+      "name": "Aggregate Contacts for Analysis",
+      "type": "n8n-nodes-base.aggregate",
+      "typeVersion": 1,
+      "position": [
+        1616,
+        -864
+      ]
+    },
+    {
+      "parameters": {
+        "documentId": {
+          "__rl": true,
+          "value": "https://docs.google.com/spreadsheets/d/1CNPdmv-956d029GIIHmpWbxPLSSQbGqWDkMcNU4gL-4/edit?gid=1667433212#gid=1667433212",
+          "mode": "url"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 1667433212,
+          "mode": "list",
+          "cachedResultName": "Leads",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1CNPdmv-956d029GIIHmpWbxPLSSQbGqWDkMcNU4gL-4/edit#gid=1667433212"
+        },
+        "options": {}
+      },
+      "id": "78f19eee-5a8c-4fa3-ab40-b2fa75595061",
+      "name": "Load LinkedIn Connections CSV",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        1168,
+        -864
+      ],
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JtTn44Qb4hyWILAc",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "={{ $('Create spreadsheet').first().json.spreadsheetId }}",
+          "mode": "id"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "gid=0",
+          "mode": "list",
+          "cachedResultName": "Sheet1",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/18tyqFEj-0JpQyGJWc9dzrSvUV3g21o3j6pK9kTaKCf8/edit#gid=0"
+        },
+        "columns": {
+          "mappingMode": "autoMapInputData",
+          "value": {},
+          "matchingColumns": [
+            "id"
+          ],
+          "schema": [
+            {
+              "id": "first_name",
+              "displayName": "first_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "last_name",
+              "displayName": "last_name",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "company",
+              "displayName": "company",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "position",
+              "displayName": "position",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "score",
+              "displayName": "score",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "qualified",
+              "displayName": "qualified",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            },
+            {
+              "id": "message",
+              "displayName": "message",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true,
+              "removed": false
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "useAppend": true
+        }
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        2288,
+        -864
+      ],
+      "id": "aeb7832d-191a-4c57-8999-ab0fc89abfbe",
+      "name": "Append row in sheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JtTn44Qb4hyWILAc",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "resource": "spreadsheet",
+        "title": "={{ 'Messages for contacts - ' + $now.format('yyyy-MM-dd hh:mm:ss') }}",
+        "sheetsUi": {
+          "sheetValues": []
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        720,
+        -864
+      ],
+      "id": "1c02dcb1-f40e-4f9c-bcb2-0f2000128361",
+      "name": "Create spreadsheet",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "JtTn44Qb4hyWILAc",
+          "name": "Google Sheets account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "move",
+        "fileId": {
+          "__rl": true,
+          "value": "={{ $json.spreadsheetId}}",
+          "mode": "id"
+        },
+        "driveId": {
+          "__rl": true,
+          "mode": "list",
+          "value": "My Drive"
+        },
+        "folderId": {
+          "__rl": true,
+          "value": "https://drive.google.com/drive/folders/1MwdCQwk5lTKJ1y82ZvVGvQUg6njVYC-O",
+          "mode": "url"
+        }
+      },
+      "type": "n8n-nodes-base.googleDrive",
+      "typeVersion": 3,
+      "position": [
+        944,
+        -864
+      ],
+      "id": "6cc7cf34-6df0-4d75-b610-88f0c4b6c182",
+      "name": "Move file",
+      "credentials": {
+        "googleDriveOAuth2Api": {
+          "id": "VqL6zSsVParCRQzR",
+          "name": "Google Drive account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "d3493706-e2b0-4ac2-a7d5-61de2e83c80e",
+              "name": "prompt",
+              "value": "=You are a lead qualification system for an eCommerce & ERP consultancy (Shopify + NetSuite).\n\nYour job is to evaluate ONE LinkedIn contact and return a strict JSON decision.\n\nINPUT:\n{{ $json }}\n\n---\n\n## DECISION LOGIC\n\nEvaluate:\n\n- Is the company likely involved in eCommerce, retail, manufacturing, or distribution?\n- Is there a reasonable chance they use or need Shopify, NetSuite, or similar systems?\n- Does the contact have influence? (founder, director, head, manager, etc.)\n- Would this company likely benefit from integrations, scaling, or operational optimization?\n\nIf information is missing, make reasonable assumptions based on role, company name, and common patterns.\n\n---\n\n## OUTPUT RULES\n\n1. Assign a score from 1 to 10\n2. If score >= 6 → qualified = true\n3. If score < 6 → qualified = false\n4. Generate a message ONLY if qualified = true\n5. Message must be:\n   - Short (max 60 words)\n   - Natural and human\n   - Lightly personalized (role or company)\n   - Focused on value (scaling, integrations, optimization)\n   - Soft CTA\n6. If not qualified → message = \"\"\n\n---\n\n## OUTPUT FORMAT (STRICT JSON ONLY)\n\n{\n  \"first_name\": \"\",\n  \"last_name\": \"\",\n  \"company\": \"\",\n  \"position\": \"\",\n  \"score\": 0,\n  \"qualified\": false,\n  \"message\": \"\",\n  \"linked_in_url\": \"\" // from the input file URL column\n}",
+              "type": "string"
+            },
+            {
+              "id": "d3eca0c9-17d9-40d8-b10a-5b255fe0615c",
+              "name": "",
+              "value": "",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        496,
+        -864
+      ],
+      "id": "4c662563-980f-4f2e-94e9-43970103d350",
+      "name": "Set prompt"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://api.anthropic.com/v1/messages",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Api-Key",
+              "value": "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"
+            },
+            {
+              "name": "anthropic-version",
+              "value": "2023-06-01"
+            },
+            {
+              "name": "Content-Type",
+              "value": "application/json"
+            }
+          ]
+        },
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ \n  {\n    messages: [\n      {\n        content: $('Set prompt').item.json.prompt,\n        role: \"assistant\"\n      },\n      {\n        content: 'Contacts: ' + $json.contacts.toJsonString(),\n        role: \"user\"\n      }\n    ],\n    max_tokens: 10024,\n    model: \"claude-opus-4-6\",\n    stream: false\n  }\n}}",
+        "options": {
+          "batching": {
+            "batch": {
+              "batchSize": 10,
+              "batchInterval": 10000
+            }
+          }
+        }
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.4,
+      "position": [
+        1840,
+        -864
+      ],
+      "id": "c8755a3c-c0db-403f-92bf-63a52d83d85b",
+      "name": "HTTP Request"
+    },
+    {
+      "parameters": {
+        "jsCode": "const formattedJSONString = $input.first().json.content[0].text.replaceAll('`', '').replace('json', '');\n\nreturn JSON.parse(formattedJSONString);"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2064,
+        -864
+      ],
+      "id": "7866048e-d4f9-4588-a507-fe98694a0f06",
+      "name": "Code in JavaScript"
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "Start Workflow": {
+      "main": [
+        [
+          {
+            "node": "Set prompt",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Filter Recent Contacts (Sept 1+)": {
+      "main": [
+        [
+          {
+            "node": "Aggregate Contacts for Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Aggregate Contacts for Analysis": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Load LinkedIn Connections CSV": {
+      "main": [
+        [
+          {
+            "node": "Filter Recent Contacts (Sept 1+)",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Aggregate Contacts for Analysis",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create spreadsheet": {
+      "main": [
+        [
+          {
+            "node": "Move file",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Move file": {
+      "main": [
+        [
+          {
+            "node": "Load LinkedIn Connections CSV",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Append row in sheet": {
+      "main": [
+        []
+      ]
+    },
+    "Set prompt": {
+      "main": [
+        [
+          {
+            "node": "Create spreadsheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request": {
+      "main": [
+        [
+          {
+            "node": "Code in JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code in JavaScript": {
+      "main": [
+        [
+          {
+            "node": "Append row in sheet",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "80398e93-79a4-4b4d-8569-69aec3fcb126",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "b2db06c6600bcdf3183f72abdc7ed84248271182f2b5b83d91a56fbf9621799d"
+  },
+  "id": "FsnLI5MiOUQA5MJZ",
+  "tags": []
+}

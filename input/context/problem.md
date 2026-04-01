@@ -1,0 +1,5 @@
+- Lead generation was outsourced at USD 2495/month
+- Limited control over targeting and quality
+- Slow iteration cycles
+- Output was not tailored to our niche (Shopify + NetSuite)
+- Dependency on external team reduced agility

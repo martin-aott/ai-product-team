@@ -1,0 +1,4 @@
+- LinkedIn search → extraction → enrichment → scoring → storage
+- Configurable ICP filters (role, company, industry)
+- Repeatable across industries
+- Scoring logic adaptable per niche

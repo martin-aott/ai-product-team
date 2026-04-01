@@ -1,0 +1,5 @@
+- Eliminated USD 2495/month cost
+- Increased targeting precision
+- Faster iteration (same-day changes)
+- Same or better lead volume
+- Fully owned pipeline
