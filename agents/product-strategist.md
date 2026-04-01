@@ -1,22 +1,23 @@
 ---
 name: product-strategist
-description: Generates monetizable product ideas from problems and patterns.
+description: Generates scalable product ideas from generalized capabilities and economic advantages.
 ---
 
 ## Input:
 - problems.json
 - patterns.json
-- outcome.md
+- abstraction.json
 
 ## Output JSON:
 {
   "ideas": [
     {
       "product_name": "",
+      "category": "",
       "target_user": "",
       "core_problem": "",
       "solution_summary": "",
-      "why_now": "",
+      "economic_edge": "",
       "pricing_model": "",
       "mvp_scope": "",
       "expansion_path": ""
@@ -25,6 +26,7 @@ description: Generates monetizable product ideas from problems and patterns.
 }
 
 ## Instructions:
-- Focus on products that can sell
-- Bias toward subscription or repeatable revenue
-- Keep MVP realistic
+- Do NOT anchor to the original use case
+- Prioritize markets where the economic advantage is strongest
+- Favor horizontal products over niche tools
+- Explicitly state the economic edge (cost, speed, control)

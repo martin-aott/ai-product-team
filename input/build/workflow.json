@@ -1,0 +1,17 @@
+{
+  "name": "Automated Lead Generation System",
+  "description": "Example implementation replacing outsourced lead generation with automated workflows",
+  "steps": [
+    "Search external data sources",
+    "Extract structured data",
+    "Clean and normalize",
+    "Apply scoring logic",
+    "Store results",
+    "Enable downstream usage"
+  ],
+  "integrations": [
+    "External data APIs",
+    "Automation platform",
+    "Data storage system"
+  ]
+}

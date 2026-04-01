@@ -1,24 +1,22 @@
-# Product Discovery Flow
+# Product Discovery Flow (Abstracted)
 
-1. Run technical-decomposer
-   → output: system_breakdown.json
+1. technical-decomposer
+   → system_breakdown.json
 
-2. Run problem-extractor
-   → input: breakdown + problem.md
-   → output: problems.json
+2. problem-extractor
+   → problems.json
 
-3. Run pattern-identifier
-   → input: breakdown + patterns.md
-   → output: patterns.json
+3. pattern-identifier
+   → patterns.json
 
-4. Run product-strategist
-   → input: problems + patterns + outcome.md
-   → output: ideas.json
+4. abstraction-engine
+   → abstraction.json
 
-5. Run feasibility-filter
-   → input: ideas.json
-   → output: scored_ideas.json
+5. product-strategist
+   → ideas.json
 
-6. Run gtm-translator
-   → input: scored_ideas.json
-   → output: go_to_market.json
+6. feasibility-filter
+   → scored_ideas.json
+
+7. gtm-translator
+   → go_to_market.json

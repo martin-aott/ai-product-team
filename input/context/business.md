@@ -1,5 +1,3 @@
-- Built for: Internal use (AOTT)
-- Industry: eCommerce / ERP services (Shopify + NetSuite)
-- Trigger: Need for consistent lead generation without external agency
-- Tools: LinkedIn, n8n, Google Sheets, APIs
-- Manual before: Outsourced lead gen team
+- Built originally for internal use
+- Industry is irrelevant for productization
+- Represents a shift from outsourced service to internal automation
